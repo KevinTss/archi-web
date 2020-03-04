@@ -6,10 +6,8 @@
   "scripts": {
     "server": "node backend/server.js",
     "server:dev": "nodemon backend/server.js",
-    "start:dev2": "webpack-dev-server --entry ./frontend/index.html --output-filename ./dist/bundle.js",
     "start": "webpack-dev-server",
-    "build": "webpack ",
-    "build2": "webpack frontend/index.html dist/bundle.js"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",

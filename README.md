@@ -9,3 +9,9 @@ npm run server
 
 npm run server:dev
 ```
+
+- Run the frontend app (VueJS)
+
+```
+npm run start
+```
