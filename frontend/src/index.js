@@ -1,11 +1,16 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 
 import App from "./App.vue";
 import LoginPage from "./pages/LoginPage.vue";
 import ShoesPage from "./pages/ShoesPage.vue";
 
 Vue.use(VueRouter);
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
 
 const router = new VueRouter({
   mode: "history",
