@@ -15,3 +15,7 @@ npm run server:dev
 ```
 npm run start
 ```
+
+### Misc
+
+Bug issue with connection: fixed with [this](https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-authentication-protocol-requested-by-server/53382070)
