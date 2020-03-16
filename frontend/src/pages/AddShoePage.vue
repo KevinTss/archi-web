@@ -66,7 +66,8 @@ export default {
       form: {
         name: "",
         quantity: "",
-        category: ""
+        category: null,
+        comment: ""
       },
       categoriesOptions: []
     };
@@ -74,8 +75,24 @@ export default {
   methods: {
     onSubmit(e) {
       e.preventDefault();
-      console.log("submit");
+      console.log("submit", this.form);
     }
+  },
+  created() {
+    const url = "http://localhost:5000/categories";
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(response => {
+        this.categoriesOptions = response.map(item => ({
+          value: item.id_categorie,
+          text: item.name
+        }));
+      });
   }
 };
 </script>
