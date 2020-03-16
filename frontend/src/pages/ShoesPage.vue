@@ -20,12 +20,21 @@
 export default {
   data() {
     return {
-      shoes: [
-        { name: "Addidas", Quantity: 42, Category: "Children" },
-        { name: "Nike", Quantity: 2, Category: "Male" },
-        { name: "Puma", Quantity: 122, Category: "Female" }
-      ]
+      shoes: []
     };
+  },
+  created() {
+    const url = "http://localhost:5000/shoes";
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(response => {
+        this.shoes = response;
+      });
   }
 };
 </script>
