@@ -5,7 +5,9 @@
         <h1>Shoes</h1>
       </b-col>
       <b-col>
-        <b-button variant="success">Add shoes</b-button>
+        <router-link to="/shoes/add">
+          <b-button variant="success">Add shoes</b-button>
+        </router-link>
       </b-col>
     </b-row>
     <b-row>

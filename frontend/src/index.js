@@ -7,6 +7,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import App from "./App.vue";
 import LoginPage from "./pages/LoginPage.vue";
 import ShoesPage from "./pages/ShoesPage.vue";
+import AddShoePage from "./pages/AddShoePage.vue";
 
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
@@ -16,7 +17,8 @@ const router = new VueRouter({
   mode: "history",
   routes: [
     { path: "/", component: LoginPage },
-    { path: "/shoes", component: ShoesPage }
+    { path: "/shoes", component: ShoesPage },
+    { path: "/shoes/add", component: AddShoePage }
   ]
 });
 
