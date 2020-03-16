@@ -1,5 +1,7 @@
 # Archi web project
 
+- Make sure you have MySQL running and a database called `archi-web`
+
 - Run the server (Node API)
 
 ```
@@ -15,8 +17,6 @@ npm run server:dev
 ```
 npm run start
 ```
-
-- Make sure you have MySQL running and a database called `archi-web`
 
 ### Misc
 
