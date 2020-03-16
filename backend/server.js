@@ -1,5 +1,6 @@
 const express = require("express");
 const mysql = require("mysql");
+const cors = require("cors");
 
 const databaseConnection = mysql.createConnection({
   host: "localhost",
@@ -9,6 +10,7 @@ const databaseConnection = mysql.createConnection({
 });
 
 const app = express();
+app.use(cors());
 
 app.get("/ping", (req, res) => {
   res.send("pong");
