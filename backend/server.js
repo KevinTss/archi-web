@@ -16,6 +16,18 @@ app.get("/ping", (req, res) => {
   res.send("pong");
 });
 
+app.get("/categories", (req, res) => {
+  databaseConnection.query(
+    "SELECT * FROM archi_web.categories;",
+    (error, results) => {
+      if (error) {
+        console.log("error", error);
+      }
+      res.json(results);
+    }
+  );
+});
+
 app.get("/shoes", (req, res) => {
   databaseConnection.query(
     "SELECT * FROM archi_web.products;",
