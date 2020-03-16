@@ -27,8 +27,17 @@ app.get("/shoes", (req, res) => {
 });
 
 app.post("/shoes", (req, res) => {
+  const cat = req.query.cat;
+  const brand = req.query.brand;
+  const quantity = req.query.quantity;
+  const comment = req.query.comment;
+
   databaseConnection.query(
-    "INSERT INTO `archi_web`.`products` (`cat_id`, `name`, `quantity`) VALUES ('1', 'Nike', '3');",
+    {
+      sql:
+        "INSERT INTO `archi_web`.`products` (`cat_id`, `name`, `quantity`, `comment`) VALUES (?, ?, ?, ?);",
+      values: [cat, brand, quantity, comment]
+    },
     (error, results) => {
       if (error) {
         console.log("error", error);
