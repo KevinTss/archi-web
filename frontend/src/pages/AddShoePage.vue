@@ -75,7 +75,17 @@ export default {
   methods: {
     onSubmit(e) {
       e.preventDefault();
-      console.log("submit", this.form);
+      const url = `http://localhost:5000/shoes?cat${this.form.category}&brand=${this.form.name}&quantity=${this.form.quantity}&comment=${this.form.comment}`;
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(response => response.json())
+        .then(response => {
+          console.log("reponse", response);
+        });
     }
   },
   created() {
