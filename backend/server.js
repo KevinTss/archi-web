@@ -1,6 +1,7 @@
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
+const session = require("express-session");
 
 const databaseConnection = mysql.createConnection({
   host: "localhost",
@@ -11,9 +12,45 @@ const databaseConnection = mysql.createConnection({
 
 const app = express();
 app.use(cors());
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: true
+  })
+);
 
 app.get("/ping", (req, res) => {
   res.send("pong");
+});
+
+app.post("/login", (req, res) => {
+  const username = req.query.username;
+  const password = req.query.password;
+
+  databaseConnection.query(
+    "SELECT * FROM archi_web.users;",
+    (error, results) => {
+      if (error) {
+        console.log("error", error);
+      }
+
+      let usr;
+      results.map(user => {
+        if (username === user.username && password === user.password) {
+          usr = user;
+        } else {
+          usr = null;
+        }
+      });
+
+      if (usr) {
+        req.session.user = usr;
+      }
+
+      res.json(usr);
+    }
+  );
 });
 
 app.get("/categories", (req, res) => {
