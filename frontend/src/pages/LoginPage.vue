@@ -54,7 +54,17 @@ export default {
   methods: {
     onSubmit(e) {
       e.preventDefault();
-      console.log("submit");
+      const url = `http://localhost:5000/login?username=${this.form.username}&password=${this.form.password}`;
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(response => response.json())
+        .then(response => {
+          this.$emit("loggedIn", response);
+        });
     }
   }
 };

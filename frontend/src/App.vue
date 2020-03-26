@@ -8,31 +8,46 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item><router-link to="/">Login</router-link></b-nav-item>
-            <b-nav-item
+            <b-nav-item v-if="user"
               ><router-link to="/shoes">Shoes</router-link></b-nav-item
             >
           </b-navbar-nav>
 
-          <b-navbar-nav class="ml-auto">
+          <b-navbar-nav v-if="user" class="ml-auto">
             <b-nav-item-dropdown right>
               <template v-slot:button-content>
-                <em>User</em>
+                <em>{{ user.username }}</em>
               </template>
-              <b-dropdown-item href="#">Profile</b-dropdown-item>
-              <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+              <b-dropdown-item @click="logout">Logout</b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>
+          <b-nav v-else>
+            <router-link to="/"><b-button>Login</b-button></router-link>
+          </b-nav>
         </b-collapse>
       </b-navbar>
     </header>
 
     <main>
-      <router-view />
+      <router-view @loggedIn="setUser" />
     </main>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      user: null
+    };
+  },
+  methods: {
+    setUser(user) {
+      this.user = user;
+    },
+    logout() {
+      console.log("logout");
+    }
+  }
+};
 </script>
