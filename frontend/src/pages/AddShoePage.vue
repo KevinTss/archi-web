@@ -63,6 +63,7 @@ export default {
         .then(response => response.json())
         .then(response => {
           console.log("reponse", response);
+          this.$router.push("/shoes");
         });
     }
   },
