@@ -14,7 +14,6 @@ Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
 const router = new VueRouter({
-  mode: "history",
   routes: [
     { path: "/", component: LoginPage },
     { path: "/shoes", component: ShoesPage },
