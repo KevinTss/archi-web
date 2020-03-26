@@ -46,7 +46,17 @@ export default {
       this.user = user;
     },
     logout() {
-      console.log("logout");
+      const url = `http://localhost:5000/logout`;
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(response => response.json())
+        .then(response => {
+          this.user = null;
+        });
     }
   }
 };

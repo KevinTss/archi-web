@@ -53,6 +53,11 @@ app.post("/login", (req, res) => {
   );
 });
 
+app.post("/logout", (req, res) => {
+  req.session.destroy();
+  res.json({ logout: true });
+});
+
 app.get("/categories", (req, res) => {
   databaseConnection.query(
     "SELECT * FROM archi_web.categories;",
