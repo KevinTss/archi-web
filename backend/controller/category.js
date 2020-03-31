@@ -1,15 +1,9 @@
-const databaseConnection = require("../database");
+const Category = require("../model/Category");
 
 module.exports = {
   retrieveAll: (req, res) => {
-    databaseConnection.query(
-      "SELECT * FROM archi_web.categories;",
-      (error, results) => {
-        if (error) {
-          console.log("error", error);
-        }
-        res.json(results);
-      }
-    );
+    Category.find(categories => {
+      res.json(categories);
+    });
   }
 };
