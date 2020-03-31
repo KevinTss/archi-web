@@ -1,15 +1,9 @@
 const express = require("express");
-const mysql = require("mysql");
 const cors = require("cors");
 const session = require("express-session");
-const route = require("./route/route");
 
-const databaseConnection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "rootpass",
-  databse: "archi_web"
-});
+const databaseConnection = require("./database");
+const route = require("./route/route");
 
 const app = express();
 app.use(cors());
@@ -21,7 +15,7 @@ app.use(
   })
 );
 
-route(app, databaseConnection);
+route(app);
 
 app.listen(5000, () => {
   console.log("Server is running on http://localhost:5000/");
