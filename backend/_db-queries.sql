@@ -8,10 +8,10 @@ CREATE TABLE `archi_web`.`users` (
 
 INSERT INTO `archi_web`.`users` (`id_user`, `username`, `password`) VALUES ('1', 'test', 'test');
 
-CREATE TABLE `archi_web`.`catagories` (
-  `id-categorie` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `archi_web`.`categories` (
+  `id_categorie` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
-  PRIMARY KEY (`id-categorie`));
+  PRIMARY KEY (`id_categorie`));
 
 CREATE TABLE `archi_web`.`products` (
   `id_product` INT UNSIGNED NOT NULL AUTO_INCREMENT,
