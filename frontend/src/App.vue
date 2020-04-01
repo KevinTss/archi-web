@@ -31,7 +31,7 @@
     </header>
 
     <main>
-      <router-view @loggedIn="setUser" />
+      <router-view @loggedIn="setUser" :token="token" />
     </main>
   </div>
 </template>
@@ -48,9 +48,10 @@ export default {
     setUser(data) {
       this.user = data.user;
       this.token = data.token;
+      this.$router.push("/shoes");
     },
     logout() {
-      const url = `http://localhost:5000/logout`;
+      const url = `http://localhost:5000/logout?token=${this.token}`;
       fetch(url, {
         method: "POST",
         headers: {
@@ -60,6 +61,8 @@ export default {
         .then(response => response.json())
         .then(response => {
           this.user = null;
+          this.token = null;
+          this.$router.push("/");
         });
     }
   }

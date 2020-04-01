@@ -25,18 +25,25 @@ export default {
       shoes: []
     };
   },
+  props: {
+    token: String
+  },
   created() {
-    const url = "http://localhost:5000/shoes";
-    fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(response => response.json())
-      .then(response => {
-        this.shoes = response;
-      });
+    if (this.token) {
+      const url = `http://localhost:5000/shoes?token=${this.token}`;
+      fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(response => response.json())
+        .then(response => {
+          this.shoes = response;
+        });
+    } else {
+      this.$router.push("/");
+    }
   }
 };
 </script>
