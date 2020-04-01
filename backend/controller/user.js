@@ -1,4 +1,5 @@
 const User = require("../model/User");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   login: (req, res) => {
@@ -15,10 +16,12 @@ module.exports = {
       });
 
       if (usr) {
+        const token = jwt.sign({ userId: usr.id_user }, "supersecret");
         req.session.user = usr;
+        req.session.token = token;
       }
 
-      res.json(usr);
+      res.json({ user: usr, token: req.session.token });
     });
   },
 
@@ -27,3 +30,8 @@ module.exports = {
     res.json({ logout: true });
   }
 };
+
+// jwt.verify(token, "supersecret", (err, decoded) => {
+//   console.log("err", err);
+//   console.group("decoded", decoded);
+// });

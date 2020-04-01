@@ -8,12 +8,12 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item v-if="user"
-              ><router-link to="/shoes">Shoes</router-link></b-nav-item
-            >
+            <b-nav-item v-if="user && token">
+              <router-link to="/shoes">Shoes</router-link>
+            </b-nav-item>
           </b-navbar-nav>
 
-          <b-navbar-nav v-if="user" class="ml-auto">
+          <b-navbar-nav v-if="user && token" class="ml-auto">
             <b-nav-item-dropdown right>
               <template v-slot:button-content>
                 <em>{{ user.username }}</em>
@@ -22,7 +22,9 @@
             </b-nav-item-dropdown>
           </b-navbar-nav>
           <b-nav v-else>
-            <router-link to="/"><b-button>Login</b-button></router-link>
+            <router-link to="/">
+              <b-button>Login</b-button>
+            </router-link>
           </b-nav>
         </b-collapse>
       </b-navbar>
@@ -38,12 +40,14 @@
 export default {
   data() {
     return {
-      user: null
+      user: null,
+      token: null
     };
   },
   methods: {
-    setUser(user) {
-      this.user = user;
+    setUser(data) {
+      this.user = data.user;
+      this.token = data.token;
     },
     logout() {
       const url = `http://localhost:5000/logout`;
