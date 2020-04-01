@@ -23,6 +23,7 @@
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.6.1",
     "cors": "^2.8.5",
+    "ejs": "^3.0.2",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "mysql": "^2.18.1",

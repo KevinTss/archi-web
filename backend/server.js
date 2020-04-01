@@ -6,6 +6,7 @@ const databaseConnection = require("./database");
 const route = require("./route/route");
 
 const app = express();
+app.set("view engine", "ejs");
 app.use(cors());
 app.use(
   session({
