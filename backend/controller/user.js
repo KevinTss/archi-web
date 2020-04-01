@@ -30,8 +30,3 @@ module.exports = {
     res.json({ logout: true });
   }
 };
-
-// jwt.verify(token, "supersecret", (err, decoded) => {
-//   console.log("err", err);
-//   console.group("decoded", decoded);
-// });
