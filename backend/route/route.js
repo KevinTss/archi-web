@@ -17,7 +17,7 @@ const requireValidToken = (req, res, next) => {
   });
 };
 
-module.exports = app => {
+module.exports = (app) => {
   app.get("/", welcomeController.welcome);
 
   app.post("/login", userController.login);
@@ -29,4 +29,8 @@ module.exports = app => {
   app.get("/shoes", requireValidToken, shoeController.retrieveAll);
 
   app.post("/shoes", requireValidToken, shoeController.add);
+
+  app.put("/shoes", requireValidToken, shoeController.edit);
+
+  app.delete("/shoes", requireValidToken, shoeController.delete);
 };

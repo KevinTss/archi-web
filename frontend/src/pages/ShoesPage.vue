@@ -12,7 +12,7 @@
     </b-row>
     <b-row>
       <b-col>
-        <b-table striped hover :items="shoes"></b-table>
+        <b-table striped hover :items="shoes" @row-clicked="item=>itemClick(item)"></b-table>
       </b-col>
     </b-row>
   </b-container>
@@ -43,6 +43,11 @@ export default {
         });
     } else {
       this.$router.push("/");
+    }
+  },
+  methods: {
+    itemClick(item) {
+      this.$router.push("/shoes/" + item.id_product);
     }
   }
 };
