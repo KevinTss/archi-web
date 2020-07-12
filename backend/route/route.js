@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-
 const welcomeController = require("../controller/home");
 const userController = require("../controller/user");
 const categoryController = require("../controller/category");
